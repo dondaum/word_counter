@@ -1,5 +1,7 @@
 class TextsController < ApplicationController
   before_action :set_text, only: [:show, :edit, :update, :destroy]
+  helper_method :counter
+  helper_method :say
 
   # GET /texts
   # GET /texts.json
@@ -9,18 +11,23 @@ class TextsController < ApplicationController
 
   # GET /texts/1
   # GET /texts/1.json
-  def show 
+  def show
   end
 
   def counter
-    input = @text.text
+    #input = @text
+    input = "dasdsadasdj asdkla lkasdlka as asd sa"
     hash = Hash.new(0)
 
-    input.downcase.scan(/\w/).each do |x|
+    input.downcase.scan(/\w+/).each do |x|
       hash[x] += 1
     end
     hash.sort_by {|x,y| y }
-    puts( hash.map{ |x,y| "#{x} kommt genau #{y} vor" }.sort )
+    ( hash.map{ |x,y| "#{x} kommt genau #{y} vor" }.sort )
+  end
+
+  def say
+    "hello"
   end
 
   # GET /texts/new
