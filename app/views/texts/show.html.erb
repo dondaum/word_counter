@@ -1,13 +1,12 @@
 <p id="notice"><%= notice %></p>
 
+<h1>Text</h1>
 <p>
-  <strong>Text:</strong>
   <%= @text.text %>
-  <%= say %>
 
-  <%= button_to "Häufigkeit der Wörter berechnen", { :controller => "texts", :action => "counter"} %>
-  <!-- render :action => "counter" -->
 </p>
 
-<%= link_to 'Edit', edit_text_path(@text) %> |
-<%= link_to 'Back', texts_path %>
+<%= link_to 'Bearbeiten', edit_text_path(@text) %> |
+<%= link_to 'Zurück', texts_path %>
+<h2> Wörter zählen </h2>
+  <%= counter %>

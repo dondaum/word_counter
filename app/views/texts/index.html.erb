@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Willkommen auf der Testseite.</h1>
-<p> Mit Hife dieser Seite kann man Texte analysieren.</P>
+<h1>Willkommen auf dieser kleinen Testseite</h1>
+<p> Mit Hife dieser Seite kann man Texte analysieren. Ein</P>
 <table>
   <thead>
     <tr>
@@ -14,9 +14,9 @@
     <% @texts.each do |text| %>
       <tr>
         <td><%= text.text %></td>
-        <td><%= link_to 'Show', text %></td>
-        <td><%= link_to 'Edit', edit_text_path(text) %></td>
-        <td><%= link_to 'Destroy', text, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Details', text %></td>
+        <td><%= link_to 'Bearbeiten', edit_text_path(text) %></td>
+        <td><%= link_to 'Löschen', text, method: :delete, data: { confirm: 'Sind Sie sicher?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +24,4 @@
 
 <br>
 
-<%= link_to 'New Text', new_text_path %>
+<%= link_to 'Neuen Text speichern', new_text_path %>

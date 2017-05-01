@@ -15,20 +15,18 @@ class TextsController < ApplicationController
   end
 
   def counter
-    #input = @text
-    input = "dasdsadasdj asdkla lkasdlka as asd sa"
+    input = @text.text
+    #input = "dasdsadasdj asdkla lkasdlka as asd sa"
     hash = Hash.new(0)
 
     input.downcase.scan(/\w+/).each do |x|
       hash[x] += 1
     end
-    hash.sort_by {|x,y| y }
-    ( hash.map{ |x,y| "#{x} kommt genau #{y} vor" }.sort )
+    #hash.sort_by {|x,y| x }
+    hash.map{ |y,x| "<strong>#{x}</strong> mal kommt das Wort '#{y}' vor, <br>" }.sort.reverse.join("").html_safe
+
   end
 
-  def say
-    "hello"
-  end
 
   # GET /texts/new
   def new
