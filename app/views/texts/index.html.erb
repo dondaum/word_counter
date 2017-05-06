@@ -1,26 +1,58 @@
 <p id="notice"><%= notice %></p>
-<h1>Willkommen auf dieser kleinen Testseite</h1>
-<p> Mit Hife dieser Seite kann man Texte analysieren.</P>
-<table>
-  <thead>
-    <tr>
-      <th>Text</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @texts.each do |text| %>
-      <tr>
-        <td><%= text.text %></td>
-        <td><%= link_to 'Details', text %></td>
-        <td><%= link_to 'Bearbeiten', edit_text_path(text) %></td>
-        <td><%= link_to 'Löschen', text, method: :delete, data: { confirm: 'Sind Sie sicher?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'Neuen Text speichern', new_text_path %>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <div class="jumbotron">
+      <h2>Willkommen auf dieser kleinen Testseite</h2>
+      <p> Mit Hife dieser Seite kann man Texte analysieren.</p>
+    </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <div class="post-preview">
+                        <% @texts.each do |text| %>
+                          <p>
+                            <% if text.created_at.today? %>
+                            <span class="label label-primary">Neu</span>
+                            <%= text.text.first(200) %>
+                            <%= "[...]" %>
+                            <%= link_to "zum Artikel", text %>
+                          <p>
+                          <p>
+                              <%= link_to 'Details', text %>
+                              <%= link_to 'Bearbeiten', edit_text_path(text) %>
+                              <%= link_to 'Löschen', text, remote: true, method: :delete, data: { confirm: 'Sind Sie sicher?' } %>
+                          </p>
+                            <br>
+                          <% else %>
+                          <%= text.text.first(200) %>
+                          <%= "[...]" %>
+                          <%= link_to "zum Artikel", text %>
+                        <p>
+                        <p>
+                            <%= link_to 'Details', text %>
+                            <%= link_to 'Bearbeiten', edit_text_path(text) %>
+                            <%= link_to 'Löschen', text, remote: true, method: :delete, data: { confirm: 'Sind Sie sicher?' } %>
+                        </p>
+                          <br>
+                          <% end %>
+                          <% end %>
+                          <br>
+        </div>
+        <div class= "container">
+          <strong> Neuen Text Serverseitig speichern
+            <%= link_to 'Neuen Text speichern', new_text_path %>
+          </strong>
+        </div>
+        <div class= "container">
+          <strong> Neuen Text asyncron mit Ajax speichern
+            <%= link_to 'Neuen Text speichern', new_text_path, remote: true %>
+          </strong>
+        </div>
+        <div id="text-form" style="display:none;"></div>
+      </div>
+    </div>
+</div>

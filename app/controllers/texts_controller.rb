@@ -1,7 +1,7 @@
 class TextsController < ApplicationController
   before_action :set_text, only: [:show, :edit, :update, :destroy]
   helper_method :counter
-  helper_method :say
+
 
   # GET /texts
   # GET /texts.json
@@ -44,7 +44,7 @@ class TextsController < ApplicationController
 
     respond_to do |format|
       if @text.save
-        format.html { redirect_to @text, notice: 'Text was successfully created.' }
+        format.html { redirect_to root_path, notice: 'Text was successfully created.' }
         format.json { render :show, status: :created, location: @text }
       else
         format.html { render :new }
