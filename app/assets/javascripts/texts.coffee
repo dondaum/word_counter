@@ -5,3 +5,7 @@
 #$ ->
 #  $("a[data-remote]").on "ajax:success", (e, data, status, xhr) ->
 #    alert "Der Artikel wurde erfolgreich gelöscht"
+
+#$(document).on "turbolinks:load", ->
+#  alert "page has loaded!"
+  

@@ -1,6 +1,6 @@
 <div class="input-group">
 <%= form_for @text, remote: true do |f|   %>
-  <%= f.text_area :text %>
+  <%= f.text_area(:text, size: "40x20") %>
   <p>
   <%= f.submit %>
   <p>

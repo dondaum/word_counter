@@ -23,7 +23,7 @@ class TextsController < ApplicationController
       hash[x] += 1
     end
     #hash.sort_by {|x,y| x }
-    hash.map{ |y,x| "<strong>#{x}</strong> mal kommt das Wort '#{y}' vor, <br>" }.sort.reverse.join("").html_safe
+    hash.map{ |y,x| "<strong>#{x}</strong> mal kommt das Wort <strong>'#{y}'</strong> vor, <br>" }.sort.reverse.join("").html_safe
 
   end
 

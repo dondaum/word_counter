@@ -1,12 +1,19 @@
 <p id="notice"><%= notice %></p>
-
-<h1>Text</h1>
-<p>
-  <%= @text.text %>
-
-</p>
-
-<%= link_to 'Bearbeiten', edit_text_path(@text) %> |
-<%= link_to 'Zurück', texts_path %>
-<h2> Wörter zählen </h2>
-  <%= counter %>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <div class="jumbotron">
+        <h1>Text</h1>
+      </div>
+      <%= @text.text %>
+      <%= link_to 'Bearbeiten', edit_text_path(@text) %> |
+      <%= link_to 'Zurück', texts_path %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <h2> Wörter zählen </h2>
+        <%= counter %>
+      </div>
+    </div>
+</div>

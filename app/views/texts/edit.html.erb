@@ -1,6 +1,12 @@
-<h1>Hier Text bearbeiten</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <h1>Hier Text bearbeiten</h1>
 
-<%= render 'form', text: @text %>
+      <%= render 'form', text: @text %>
 
-<%= link_to 'Anzeigen', @text %> |
-<%= link_to 'Zurück', texts_path %>
+      <%= link_to 'Anzeigen', @text %> |
+      <%= link_to 'Zurück', texts_path %>
+    </div>
+  </div>
+</div>

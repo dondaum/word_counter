@@ -1,4 +1,3 @@
-<p id="notice"><%= notice %></p>
 <div class="container">
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
@@ -6,6 +5,7 @@
       <h2>Willkommen auf dieser kleinen Testseite</h2>
       <p> Mit Hife dieser Seite kann man Texte analysieren.</p>
     </div>
+    <div class="alert alert-warning" role="alert" id="notice"><%= notice %></div>
     </div>
   </div>
 </div>
@@ -15,8 +15,9 @@
       <div class="post-preview">
                         <% @texts.each do |text| %>
                           <p>
-                            <% if text.created_at.today? %>
+                           <% if text.created_at.today? %>
                             <span class="label label-primary">Neu</span>
+                            <p><%= text.created_at.strftime("%Y/%m/%d") %></p>
                             <%= text.text.first(200) %>
                             <%= "[...]" %>
                             <%= link_to "zum Artikel", text %>
@@ -28,6 +29,7 @@
                           </p>
                             <br>
                           <% else %>
+                          <p><%= text.created_at.strftime("%Y/%m/%d") %></p>
                           <%= text.text.first(200) %>
                           <%= "[...]" %>
                           <%= link_to "zum Artikel", text %>
