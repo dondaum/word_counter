@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(params[:user])
+    @user = User.new(user_params)
     if @user.save
       flash[:notice] = "You signed up successfully"
       flash[:color]= "valid"
@@ -12,6 +12,14 @@ class UsersController < ApplicationController
       flash[:notice] = "Form is invalid"
       flash[:color]= "invalid"
     end
-    render "new"
+    redirect_to root_path
+  end
 end
-end
+
+
+private
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def user_params
+    params.require(:user).permit(:username, :email, :encrypted_password)
+  end
