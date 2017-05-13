@@ -1,5 +1,7 @@
 class TextsController < ApplicationController
   before_action :set_text, only: [:show, :edit, :update, :destroy]
+  before_action  :authorize, only: [:edit, :update, :create, :destroy]
+
   helper_method :counter
 
 
@@ -44,9 +46,11 @@ class TextsController < ApplicationController
 
     respond_to do |format|
       if @text.save
-        format.html { redirect_to root_path, notice: 'Text was successfully created.' }
+        flash[:success] = 'Text erfolgreich gespeichert.'
+        format.html { redirect_to root_path}
         format.json { render :show, status: :created, location: @text }
       else
+        flash[:alert] = 'Fehler'
         format.html { render :new }
         format.json { render json: @text.errors, status: :unprocessable_entity }
       end
@@ -58,9 +62,11 @@ class TextsController < ApplicationController
   def update
     respond_to do |format|
       if @text.update(text_params)
-        format.html { redirect_to @text, notice: 'Text was successfully updated.' }
+        flash[:success] = 'Text erfolgreich geändert.'
+        format.html { redirect_to @text}
         format.json { render :show, status: :ok, location: @text }
       else
+        flash[:alert] = 'Fehler'
         format.html { render :edit }
         format.json { render json: @text.errors, status: :unprocessable_entity }
       end
@@ -72,7 +78,8 @@ class TextsController < ApplicationController
   def destroy
     @text.destroy
     respond_to do |format|
-      format.html { redirect_to texts_url, notice: 'Text was successfully destroyed.' }
+      flash[:success] = 'Text erfolgreich gelöscht.'
+      format.html { redirect_to texts_url }
       format.json { head :no_content }
     end
   end

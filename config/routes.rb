@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  get 'users/new'
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  get '/logout' => 'sessions#destroy'
+
+  get '/register' => 'users#new'
 
   #get "texts/counter" => "texts#counter"
   root 'texts#index'

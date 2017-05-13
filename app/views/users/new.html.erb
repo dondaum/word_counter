@@ -4,12 +4,13 @@
       <div class="jumbotron">
       <h2>Anmelden</h2>
       </div>
-      <%= form_for @user, remote: true do |f|   %>
+      <%= form_for @user do |f|   %>
+        <%= render 'shared/error_messages' %>
         <p> Username:</br> <%= f.text_field :username%> </p>
         <p> Email:</br> <%= f.text_field :email%> </p>
-        <p> Password:</br> <%= f.password_field :encrypted_password%></p>
+        <p> Password:</br> <%= f.password_field :password%></p>
         <p> Password Confirmation:</br> <%= f.password_field :password_confirmation%> </p>
-      <%= f.submit :Signup %>
+      <%= f.submit "Account erstellen", class: "btn btn-primary" %>
     <% end %>
     </div>
   </div>
