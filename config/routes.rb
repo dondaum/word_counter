@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get '/logout' => 'sessions#destroy'
 
   get '/register' => 'users#new'
+  get '/users' => 'users#index'
 
   #get "texts/counter" => "texts#counter"
   root 'texts#index'

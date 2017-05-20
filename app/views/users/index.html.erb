@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <h1> Alle registrierten User </h1>
+        <% @users.each do |user| %>
+        <ul class="list-group">
+          <li class="list-group-item">
+            <span class="badge"><%= user.id%></span>
+            <p>User-Name: <%= user.username %></p>
+            E-Mail Adresse: <%= user.email %>
+          </li>
+        </ul>
+        <% end %>
+    </div>
+  </div>
+</div>
