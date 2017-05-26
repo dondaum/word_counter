@@ -2,10 +2,11 @@
   <div class="container">
     <div class="col-lg-8 col-lg-offset-4 col-md-10 col-md-offset-1">
       <%= link_to "|Start|", root_path %>
+      <%= link_to "|User|", users_path %>
       <% if current_user %>
-       Angemeldet als  <%= current_user.username %> | <%= link_to "Logout", logout_path %>
+      <%= link_to  "Angemeldet als  #{current_user.username}", current_user %><%= link_to "|Logout|", logout_path %>
       <% else %>
-      <%= link_to 'Login', '/login' %> | <%= link_to 'Registrieren', '/register' %>
+      <%= link_to '|Login|', '/login' %> <%= link_to '|Registrieren|', '/register' %>
       <% end%>
     </div>
   </div>
