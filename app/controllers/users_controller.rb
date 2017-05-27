@@ -10,7 +10,6 @@ class UsersController < ApplicationController
         flash[:success] = "You signed up successfully"
         redirect_to root_path
       else
-        flash[:danger] = "Form is invalid"
         render :new
       end
     end
