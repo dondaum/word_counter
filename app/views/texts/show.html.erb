@@ -4,6 +4,7 @@
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
       <div class="jumbotron">
         <h1>Text</h1>
+        <p>created at: <%= @text.created_at.strftime("%d.%m.%Y") %> </p>
       </div>
       <%= @text.text %>
       <%= link_to 'Bearbeiten', edit_text_path(@text) %> |
@@ -12,7 +13,7 @@
   </div>
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-      <h2> Wörter zählen </h2>
+      <h2> Counter characters</h2>
         <%= counter %>
       </div>
     </div>

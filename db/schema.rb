@@ -10,12 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170513112859) do
+ActiveRecord::Schema.define(version: 20170527081309) do
 
   create_table "texts", force: :cascade do |t|
     t.text     "text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "user_id"
+    t.index ["user_id"], name: "index_texts_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

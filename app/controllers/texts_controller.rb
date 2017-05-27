@@ -9,6 +9,7 @@ class TextsController < ApplicationController
   # GET /texts.json
   def index
     @texts = Text.all
+    @users = User.all
   end
 
   # GET /texts/1

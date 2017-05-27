@@ -5,9 +5,12 @@
         <li class="list-group-item">
           <h1> <%= @user.username %> </h1>
           <p> E-Mail: <%= @user.email %> <p>
-          <p> Registriert am: <%= @user.created_at %> <p>
-          <p> Mitglied seid: <%= member_since %> Tagen <p>
+          <p> Registered at: <%= @user.created_at.strftime('%d.%m.%Y') %> <p>
+          <p> Member since: <%= member_since %> Tagen <p>
+          <p> Number of posted articles: <%= @user.texts.size %> </p>
+          <% if current_user == @user %>
           <p> <%= link_to "Delete User", @user, method: :delete, data: {confirm: "Are you sure?"} %><p>
+          <% end %>
           </li>
         </ul>
       </div>

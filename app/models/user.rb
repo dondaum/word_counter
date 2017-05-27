@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_many :texts
+
   #use the bcrypt gem for secure password
   has_secure_password
   before_save { self.email = email.downcase }

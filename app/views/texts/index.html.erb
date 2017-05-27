@@ -13,10 +13,17 @@
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
       <div class="post-preview">
                         <% @texts.each do |text| %>
+                        <% @users.each do |user| %>
                           <p>
                            <% if text.created_at.today? %>
                             <span class="label label-primary">Neu</span>
-                            <p><%= text.created_at.strftime("%Y/%m/%d") %></p>
+                            <p><%= text.created_at.strftime("%Y/%m/%d") %>
+                              <% unless text.user.nil? %>
+                               Posted from: <%= link_to "#{text.user.username}", users_path %>
+                               <% else %>
+                               Post from: Endless sleep
+                               <%end%>
+                            </p>
                             <%= text.text.first(200) %>
                             <%= "[...]" %>
                             <%= link_to "zum Artikel", text %>
@@ -28,17 +35,23 @@
                           </p>
                             <br>
                           <% else %>
-                          <p><%= text.created_at.strftime("%Y/%m/%d") %></p>
+                          <p><%= text.created_at.strftime("%Y/%m/%d") %>
+                            <% unless text.user.nil? %>
+                             Posted from: <%= link_to "#{text.user.username}", user %>
+                             <% else %>
+                             Post from: Endless sleep
+                             <%end%>
+                          </p>
                           <%= text.text.first(200) %>
                           <%= "[...]" %>
                           <%= link_to "zum Artikel", text %>
-                        <p>
                         <p>
                             <%= link_to 'Details', text %>
                             <%= link_to 'Bearbeiten', edit_text_path(text) %>
                             <%= link_to 'Löschen', text, remote: true, method: :delete, data: { confirm: 'Sind Sie sicher?' } %>
                         </p>
                           <br>
+                          <% end %>
                           <% end %>
                           <% end %>
                           <br>
