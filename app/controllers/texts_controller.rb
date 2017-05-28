@@ -17,6 +17,7 @@ class TextsController < ApplicationController
   def show
   end
 
+
   def counter
     input = @text.text
     #input = "dasdsadasdj asdkla lkasdlka as asd sa"
@@ -44,6 +45,8 @@ class TextsController < ApplicationController
   # POST /texts.json
   def create
     @text = Text.new(text_params)
+    #allocate current_user on text create action. Alternative in text model
+    @text.user = current_user
 
     respond_to do |format|
       if @text.save
