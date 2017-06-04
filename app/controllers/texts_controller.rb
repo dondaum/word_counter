@@ -8,7 +8,7 @@ class TextsController < ApplicationController
   # GET /texts
   # GET /texts.json
   def index
-    @texts = Text.all
+    @texts = Text.paginate(:page => params[:page], per_page: 5)
     @users = User.all
   end
 

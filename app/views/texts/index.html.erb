@@ -23,7 +23,7 @@
                                 Post from: Endless sleep
                                 <%end%>
                             </p>
-                            <%= text.text.first(200) %>
+                            <%= text.text.first(300) %>
                             <%= "[...]" %>
                             <%= link_to "zum Artikel", text %>
                           <p>
@@ -41,7 +41,7 @@
                              Post from: Endless sleep
                              <%end%>
                           </p>
-                          <%= text.text.first(200) %>
+                          <%= text.text.first(300) %>
                           <%= "[...]" %>
                           <%= link_to "zum Artikel", text %>
                         <p>
@@ -65,6 +65,7 @@
           </strong>
         </div>
         <div id="text-form" style="display:none;"></div>
+        <%= will_paginate @texts, renderer: BootstrapPagination::Rails %>
       </div>
     </div>
 </div>
