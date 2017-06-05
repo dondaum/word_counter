@@ -2,70 +2,58 @@
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
       <div class="jumbotron">
-      <h2>Twitter like Word-Counter Project</h2>
-      <p> Number of posts: <%= @texts.size %> </p>
-    </div>
+        <h2>Twitter like Word-Counter Project</h2>
+        <p> Number of posts: <%= @number %> </p>
+     </div>
     </div>
   </div>
 </div>
 <div class="container">
+  <% @texts.each.with_index do |text, index| %>
+    <ul class="timeline">
+      <% if index.odd? %>
+        <li>
+          <% else %>
+          <li class="timeline-inverted">
+      <% end %>
+          <div class="timeline-badge <%= mix %>"><i class="glyphicon glyphicon-menu-down"></i></div>
+          <div class="timeline-panel">
+            <div class="timeline-heading">
+              <% if text.created_at.today? %>
+               <span class="label label-primary">Neu</span>
+              <% end %>
+              <h4 class="timeline-title">
+                <% unless text.user.nil? %>
+                Posted from: <%= link_to "#{text.user.username}", text.user %>
+                <% else %>
+                Post from: Endless sleep
+                <%end%>
+              </h4>
+              <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> Posted at: <%= text.created_at.strftime("%d.%m.%Y") %></small></p>
+            </div>
+            <div class="timeline-body">
+                <%= text.text.first(300) %>
+                <%= "[...]" %>
+                <%= link_to "Article", text %>
+                <p>
+                <%= link_to 'Details', text %>
+                <%= link_to 'Edit', edit_text_path(text) %>
+                <%= link_to 'Delete', text, remote: true, method: :delete, data: { confirm: 'Are you sure?' } %>
+                </p>
+            </div>
+          </div>
+        </li>
+    </ul>
+<% end %>
+<div class= "container">
   <div class="row">
-    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-      <div class="post-preview">
-                        <% @texts.each do |text| %>
-                          <p>
-                           <% if text.created_at.today? %>
-                            <span class="label label-primary">Neu</span>
-                            <p><%= text.created_at.strftime("%Y/%m/%d") %>
-                              <% unless text.user.nil? %>
-                                Posted from: <%= link_to "#{text.user.username}", text.user %>
-                                <% else %>
-                                Post from: Endless sleep
-                                <%end%>
-                            </p>
-                            <%= text.text.first(300) %>
-                            <%= "[...]" %>
-                            <%= link_to "zum Artikel", text %>
-                          <p>
-                          <p>
-                              <%= link_to 'Details', text %>
-                              <%= link_to 'Bearbeiten', edit_text_path(text) %>
-                              <%= link_to 'Löschen', text, remote: true, method: :delete, data: { confirm: 'Sind Sie sicher?' } %>
-                          </p>
-                            <br>
-                          <% else %>
-                          <p><%= text.created_at.strftime("%Y/%m/%d") %>
-                           <% unless text.user.nil? %>
-                             Posted from: <%= link_to "#{text.user.username}", text.user %>
-                             <% else %>
-                             Post from: Endless sleep
-                             <%end%>
-                          </p>
-                          <%= text.text.first(300) %>
-                          <%= "[...]" %>
-                          <%= link_to "zum Artikel", text %>
-                        <p>
-                            <%= link_to 'Details', text %>
-                            <%= link_to 'Bearbeiten', edit_text_path(text) %>
-                            <%= link_to 'Löschen', text, remote: true, method: :delete, data: { confirm: 'Sind Sie sicher?' } %>
-                        </p>
-                          <br>
-                          <% end %>
-                          <% end %>
-                          <br>
-        </div>
-        <div class= "container">
-          <strong> Neuen Text Serverseitig speichern
-            <%= link_to 'Neuen Text speichern', new_text_path %>
-          </strong>
-        </div>
-        <div class= "container">
-          <strong> Neuen Text asyncron mit Ajax speichern
-            <%= link_to 'Neuen Text speichern', new_text_path, remote: true %>
-          </strong>
-        </div>
-        <div id="text-form" style="display:none;"></div>
-        <%= will_paginate @texts, renderer: BootstrapPagination::Rails %>
-      </div>
+    <div class="col-lg-8 col-lg-offset-3 col-md-10 col-md-offset-1">
+        <ul><strong> Save a new record <%= link_to 'Create a new record', new_text_path %></strong></ul>
+        <ul><strong> Use ajax to save a new record <%= link_to 'Create a new record', new_text_path, remote: true %></strong></ul>
+          <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1">
+            <div id="text-form" style="display:none;"></div>
+            <ul><%= will_paginate @texts, renderer: BootstrapPagination::Rails %></ul>
+          </div>
     </div>
+  </div>
 </div>

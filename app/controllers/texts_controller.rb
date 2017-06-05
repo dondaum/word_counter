@@ -2,7 +2,7 @@ class TextsController < ApplicationController
   before_action :set_text, only: [:show, :edit, :update, :destroy]
   before_action  :authorize, only: [:edit, :update, :create, :destroy]
 
-  helper_method :counter
+  helper_method :counter, :mix
 
 
   # GET /texts
@@ -10,6 +10,7 @@ class TextsController < ApplicationController
   def index
     @texts = Text.paginate(:page => params[:page], per_page: 5)
     @users = User.all
+    @number = Text.all.count
   end
 
   # GET /texts/1
@@ -88,6 +89,7 @@ class TextsController < ApplicationController
     end
   end
 
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_text
@@ -98,4 +100,10 @@ class TextsController < ApplicationController
     def text_params
       params.require(:text).permit(:text)
     end
+
+    def mix
+      colour_mix = ["success", "info", "warning", "danger"]
+      colour_mix.sample
+    end
+
 end
