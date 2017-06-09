@@ -13,7 +13,16 @@
   </div>
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-      <h2> Counter characters</h2>
+      <h2> Sentiment analysis </h2>
+        <ul class="list-group">
+          <li class="list-group-item">Sentiment:<strong><%= @text.sentiment %></strong> </li>
+          <li class="list-group-item">Based on sentiment socre:<strong> <%= @text.score %></strong> </li>
+        </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <h2> Text descriptive analysis</h2>
         <%= counter %>
       </div>
     </div>

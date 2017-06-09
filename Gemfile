@@ -35,6 +35,8 @@ gem 'will_paginate-bootstrap'
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt'
+# Use sentimental for text scoring 
+gem 'sentimental'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
