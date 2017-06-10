@@ -1,21 +1,35 @@
-<%= form_for @text, remote: true do |f| %>
-  <% if text.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(text.errors.count, "error") %> prohibited this text from being saved:</h2>
+<div class="container" id = "box">
+    <div class="row vertical-offset-100">
+    	<div class="col-md-4 col-md-offset-4">
+    		<div class="panel panel-default">
+			  	<div class="panel-heading">
+			    	<h3 class="panel-title">Please enter text</h3>
+			 	  </div>
+          <%= form_for @text do |f|   %>
+          <% if text.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(text.errors.count, "error") %> prohibited this text from being saved:</h2>
 
-      <ul>
-      <% text.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.text_area(:text, size: "40x20") %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+              <ul>
+              <% text.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
+			  	<div class="panel-body">
+			    	<form accept-charset="UTF-8" role="form">
+                    <fieldset>
+              <div class="form-group">
+                <%= f.text_area :text, size: "40x20",  class: "form-control", placeholder: "Enter text", type: "text" %>
+              </div>
+                <%= f.submit "Create text", class: "btn btn-lg btn-success btn-block" %>
+                <%= link_to "Back", :back %>
+			    	</fieldset>
+              <% end %>
+			      	</form>
+			    </div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -28,7 +28,7 @@ class TextsController < ApplicationController
       hash[x] += 1
     end
     #hash.sort_by {|x,y| x }
-    hash.map{ |y,x| "<strong>#{x}</strong> mal kommt das Wort <strong>'#{y}'</strong> vor, <br>" }.sort.reverse.join("").html_safe
+    hash.map{ |y,x| "<strong>#{x}</strong> times of the word <strong>'#{y}'</strong><br>" }.sort.reverse.join("").html_safe
 
   end
 
@@ -51,11 +51,11 @@ class TextsController < ApplicationController
 
     respond_to do |format|
       if @text.save
-        flash[:success] = 'Text erfolgreich gespeichert.'
+        flash[:success] = 'Text saved successfully.'
         format.html { redirect_to root_path}
         format.json { render :show, status: :created, location: @text }
       else
-        flash[:alert] = 'Fehler'
+        flash[:alert] = 'Failure'
         format.html { render :new }
         format.json { render json: @text.errors, status: :unprocessable_entity }
       end
@@ -67,11 +67,11 @@ class TextsController < ApplicationController
   def update
     respond_to do |format|
       if @text.update(text_params)
-        flash[:success] = 'Text erfolgreich geändert.'
+        flash[:success] = 'Text saved successfully.'
         format.html { redirect_to @text}
         format.json { render :show, status: :ok, location: @text }
       else
-        flash[:alert] = 'Fehler'
+        flash[:alert] = 'Failure'
         format.html { render :edit }
         format.json { render json: @text.errors, status: :unprocessable_entity }
       end
@@ -83,7 +83,7 @@ class TextsController < ApplicationController
   def destroy
     @text.destroy
     respond_to do |format|
-      flash[:success] = 'Text erfolgreich gelöscht.'
+      flash[:success] = 'Text deleted successfully'
       format.html { redirect_to texts_url }
       format.json { head :no_content }
     end

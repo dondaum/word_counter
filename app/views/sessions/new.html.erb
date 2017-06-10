@@ -1,14 +1,26 @@
-<div class="container">
-  <div class="row">
-    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-      <div class="jumbotron">
-        Login
-      </div>
-        <%= form_tag '/login' do %>
-          <ul>Email: <%= text_field_tag :email %></ul>
-          <ul>Passwort: <%= password_field_tag :password %></ul>
-          <ul><%= submit_tag "Login", class: "btn btn-primary" %></ul>
-        <% end %>
-    </div>
-  </div>
+<div class="container" id = "box">
+    <div class="row vertical-offset-100">
+    	<div class="col-md-4 col-md-offset-4">
+    		<div class="panel panel-default">
+			  	<div class="panel-heading">
+			    	<h3 class="panel-title">Please Login</h3>
+			 	  </div>
+          <%= form_tag '/login' do %>
+			  	<div class="panel-body">
+			    	<form accept-charset="UTF-8" role="form">
+                    <fieldset>
+              <div class="form-group">
+                <%= text_field_tag :email, "", class: 'form-control', placeholder: "Email", type: "text"  %>
+              </div>
+              <div class="form-group">
+                <%= password_field_tag :password, "", class: 'form-control', placeholder: "Password", type: "text"  %>
+              </div>
+                <%= submit_tag "Login", class: "btn btn-lg btn-success btn-block" %>
+			    	</fieldset>
+              <% end %>
+			      	</form>
+			    </div>
+			</div>
+		</div>
+	</div>
 </div>

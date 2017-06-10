@@ -11,6 +11,7 @@
           <% if current_user == @user %>
           <p> <%= link_to "Delete User", @user, method: :delete, data: {confirm: "Are you sure?"} %><p>
           <% end %>
+          <%= link_to "Back", :back %>
           </li>
         </ul>
       </div>
